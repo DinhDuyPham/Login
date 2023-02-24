@@ -1,0 +1,164 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-image: url(../img/background.jpg);
+    font-size: 1.6rem;
+    background-size: cover;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    color: #fff;
+}
+
+.form {
+    width: 520px;
+    height: 600px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 22px;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px #eee;
+    padding: 20px;
+}
+
+.form.form_register {
+    height: 700px;
+}
+
+.form h3 {
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 70px;
+}
+
+.lable {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 70%;
+    min-width: 70%;
+}
+
+.form.form_register .lable {
+    margin-top: 50px;
+}
+
+.lable::after {
+    position: absolute;
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: #ffffff;
+}
+
+.lable input {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 2rem;
+    width: 90%;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.lable label {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    opacity: 1;
+    transition: 0.2s linear;
+    user-select: none;
+    cursor: text;
+}
+
+.lable i {
+    position: absolute;
+    font-size: 2rem;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.forget {
+    margin-top: 40px;
+}
+
+.forget span {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.btn {
+    position: relative;
+    margin-top: 15px;
+    margin: 30px;
+    padding: 18px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+}
+
+.btn:hover {
+    background-position: right center;
+}
+
+.register {
+    margin-top: 10px;
+}
+
+.form a {
+    color: #fff;
+}
+
+.btn_register-invalid,
+.btn_login-invalid {
+    animation: invalid 0.2s linear 4;
+}
+
+@keyframes invalid {
+    0% {
+        transform: translateX(-5px);
+    }
+    25% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-0px);
+    }
+    100% {
+        transform: translateX(-5px);
+    }
+}
