@@ -47,27 +47,29 @@
             <p class="register">Don't have a account <a href="./register.html" id="register">Register</a></p>
         </form>
         <script>
-            let btn_login = document.querySelector(".btn.btn_login");
-            btn_login.addEventListener("click", () => {
-                let email = document.querySelector("#email").value;
-                let password = document.querySelector("#password").value;
-                let user = JSON.parse(localStorage.getItem("Users"));
-                if (invalid("Đoàn Hải Duy", email, password, password,1)) {
-                    for (var item = 0; item < user.length; item++) {
-                        if (email === user[item].email && password === user[item].password) {
-                            console.log("successfully");
-                            window.location = "https://example.com";
-                            break;
-                        } else {
-                            console.log("fail");
-                            fail_login(btn_login);
+            window.onload = () => {
+                let btn_login = document.querySelector(".btn.btn_login");
+                btn_login.addEventListener("click", () => {
+                    let email = document.querySelector("#email").value;
+                    let password = document.querySelector("#password").value;
+                    let user = JSON.parse(localStorage.getItem("Users"));
+                    if (render.invalid("Đoàn Hải Duy", email, password, password, 1)) {
+                        for (var item = 0; item < user.length; item++) {
+                            if (email === user[item].email && password === user[item].password) {
+                                console.log("successfully");
+                                window.location = "https://example.com";
+                                break;
+                            } else {
+                                console.log("fail");
+                                render.fail_login(btn_login);
+                            }
                         }
+                    } else {
+                        render.fail_login(btn_login);
                     }
-                } else {
-                    fail_login(btn_login);
-                }
-                console.log(user, email, password);
-            });
+                    console.log(user, email, password);
+                });
+            };
         </script>
         <script src="./assets/js/app.js"></script>
     </body>

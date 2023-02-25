@@ -45,12 +45,16 @@
             <div class="lable">
                 <input placeholder=" " type="password" name="password" id="password" />
                 <label for="password">Password</label>
-                <i class="fa-solid fa-lock"></i>
+                <!-- <i class="fa-solid fa-lock"></i> -->
+                <i class="fa-solid fa-eye-slash"></i>
+                <!-- <i class="fa-regular fa-eye"></i> -->
             </div>
             <div class="lable">
                 <input placeholder=" " type="password" name="Confirm_password" id="Confirm_password" />
                 <label for="Confirm_password">Confirm password</label>
-                <i class="fa-solid fa-lock"></i>
+                <!-- <i class="fa-solid fa-lock"></i> -->
+                <i class="fa-solid fa-eye-slash"></i>
+                <!-- <i class="fa-regular fa-eye active"></i> -->
             </div>
             <div class="btn btn_register">Register</div>
             <p class="register">Already have an account? <a href="./index.html" id="Login">Login</a></p>
@@ -67,7 +71,7 @@
                     let email = document.querySelector("#email").value;
                     let password = document.querySelector("#password").value;
                     let cf_password = document.querySelector("#Confirm_password").value;
-                    if (invalid(fullName, email, password, cf_password, 0)) {
+                    if (render.invalid(fullName, email, password, cf_password, 0)) {
                         user.id = id;
                         user.fullName = fullName;
                         user.email = email;
@@ -82,9 +86,10 @@
                         password = document.querySelector("#password").value = "";
                         cf_password = document.querySelector("#Confirm_password").value = "";
                     } else {
-                        fail_register(btn_register);
+                        render.fail_register(btn_register);
                     }
                 });
+                render.toogle_hide_password();
             };
         </script>
         <script src="./assets/js/app.js"></script>

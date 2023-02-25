@@ -1,18 +1,37 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 * {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 html {
     font-size: 55.5%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 body {
     background-image: url(../img/background.jpg);
     font-size: 1.6rem;
     background-size: cover;
+    -o-object-fit: cover;
     object-fit: cover;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     font-family: "Poppins", sans-serif;
     height: 100vh;
@@ -22,11 +41,19 @@ body {
 .form {
     width: 450px;
     border: 1px solid #ccc;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     border-radius: 22px;
     background-color: rgba(255, 255, 255, 0.2);
+    -webkit-box-shadow: 0 0 20px #eee;
     box-shadow: 0 0 20px #eee;
     padding: 20px;
 }
@@ -35,15 +62,23 @@ body {
 }
 
 .form h3 {
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: 500;
     line-height: 1.1;
     margin-top: 70px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .lable {
     margin-top: 60px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     position: relative;
     width: 70%;
@@ -66,22 +101,17 @@ body {
 }
 
 .lable.lable-error::after {
+    -webkit-box-shadow: 0 0 20px #eee;
     box-shadow: 0 0 20px #eee;
-    animation: progress 0.2s linear;
-}
-
-@keyframes progress {
-    0% {
-        background-color: #ffffff;
-    }
-    100% {
-        background-color: rgb(224, 68, 37);
-    }
+    background-color: rgb(213, 141, 40);
+    -webkit-animation: invalid 0.3s linear 4;
+    animation: invalid 0.3s linear 4;
 }
 
 .lable.lable-error i {
     /* box-shadow: 0 0 20px #eee; */
-    color: rgb(224, 68, 37);
+    color: rgb(213, 141, 40);
+    -webkit-animation: invalid 0.1s linear 4;
     animation: invalid 0.1s linear 4;
 }
 
@@ -99,10 +129,17 @@ body {
     position: absolute;
     left: 0;
     top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     font-size: 2rem;
     opacity: 1;
+    -webkit-transition: 0.2s linear;
+    -o-transition: 0.2s linear;
     transition: 0.2s linear;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     cursor: text;
     color: #e2e2e2;
@@ -113,7 +150,20 @@ body {
     font-size: 2rem;
     right: 0;
     top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+    cursor: pointer;
+}
+
+input:not(:-moz-placeholder-shown) + label {
+    opacity: 0;
+    visibility: hidden;
+}
+
+input:not(:-ms-input-placeholder) + label {
+    opacity: 0;
+    visibility: hidden;
 }
 
 input:focus + label,
@@ -132,17 +182,33 @@ input:not(:placeholder-shown) + label {
 }
 
 .btn {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     position: relative;
     margin: 30px 30px 16px;
     padding: 18px 45px;
     text-align: center;
     text-transform: uppercase;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
     transition: 0.5s;
     background-size: 200% auto;
     color: white;
+    -webkit-box-shadow: 0 0 20px #eee;
     box-shadow: 0 0 20px #eee;
     border-radius: 10px;
     cursor: pointer;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(#f6d365),
+        color-stop(51%, #fda085),
+        to(#f6d365)
+    );
+    background-image: -o-linear-gradient(left, #f6d365 0%, #fda085 51%, #f6d365 100%);
     background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
 }
 
@@ -160,23 +226,52 @@ input:not(:placeholder-shown) + label {
 
 .btn_register-invalid,
 .btn_login-invalid {
+    -webkit-animation: invalid 0.2s linear 4;
     animation: invalid 0.2s linear 4;
+}
+
+@-webkit-keyframes invalid {
+    0% {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
+    25% {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+    50% {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    75% {
+        -webkit-transform: translateX(-0px);
+        transform: translateX(-0px);
+    }
+    100% {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
 }
 
 @keyframes invalid {
     0% {
+        -webkit-transform: translateX(-5px);
         transform: translateX(-5px);
     }
     25% {
+        -webkit-transform: translateX(0px);
         transform: translateX(0px);
     }
     50% {
+        -webkit-transform: translateX(5px);
         transform: translateX(5px);
     }
     75% {
+        -webkit-transform: translateX(-0px);
         transform: translateX(-0px);
     }
     100% {
+        -webkit-transform: translateX(-5px);
         transform: translateX(-5px);
     }
 }
