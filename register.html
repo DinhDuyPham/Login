@@ -67,7 +67,7 @@
                     let email = document.querySelector("#email").value;
                     let password = document.querySelector("#password").value;
                     let cf_password = document.querySelector("#Confirm_password").value;
-                    if (invalid(fullName, email, password, cf_password)) {
+                    if (invalid(fullName, email, password, cf_password, 0)) {
                         user.id = id;
                         user.fullName = fullName;
                         user.email = email;

@@ -65,6 +65,26 @@ body {
     background-color: #ffffff;
 }
 
+.lable.lable-error::after {
+    box-shadow: 0 0 20px #eee;
+    animation: progress 0.2s linear;
+}
+
+@keyframes progress {
+    0% {
+        background-color: #ffffff;
+    }
+    100% {
+        background-color: rgb(224, 68, 37);
+    }
+}
+
+.lable.lable-error i {
+    /* box-shadow: 0 0 20px #eee; */
+    color: rgb(224, 68, 37);
+    animation: invalid 0.1s linear 4;
+}
+
 .lable input {
     border: none;
     background-color: transparent;
@@ -85,6 +105,7 @@ body {
     transition: 0.2s linear;
     user-select: none;
     cursor: text;
+    color: #e2e2e2;
 }
 
 .lable i {

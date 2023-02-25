@@ -52,9 +52,9 @@
                 let email = document.querySelector("#email").value;
                 let password = document.querySelector("#password").value;
                 let user = JSON.parse(localStorage.getItem("Users"));
-                if (invalid("Đoàn Hải Duy", email, password, password)) {
+                if (invalid("Đoàn Hải Duy", email, password, password,1)) {
                     for (var item = 0; item < user.length; item++) {
-                        if (email == user[item].email && password == user[item].password) {
+                        if (email === user[item].email && password === user[item].password) {
                             console.log("successfully");
                             window.location = "https://example.com";
                             break;
