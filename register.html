@@ -57,11 +57,12 @@
         </form>
         <script>
             window.onload = function () {
-                let listUser = JSON.parse(localStorage.getItem("Users"));
+                let listUser = [];
                 let user = {};
                 let id = 1;
                 let btn_register = document.querySelector(".btn.btn_register");
                 btn_register.addEventListener("click", () => {
+                    // listUser = JSON.parse(localStorage.getItem("Users"));
                     let fullName = document.querySelector("#Name").value;
                     let email = document.querySelector("#email").value;
                     let password = document.querySelector("#password").value;
@@ -76,6 +77,7 @@
                         localStorage.setItem("Users", JSON.stringify(listUser));
                         id++;
                         user = {};
+                        console.log("test");
                         fullName = document.querySelector("#Name").value = "";
                         email = document.querySelector("#email").value = "";
                         password = document.querySelector("#password").value = "";
