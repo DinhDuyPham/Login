@@ -62,12 +62,11 @@
                 let id = 1;
                 let btn_register = document.querySelector(".btn.btn_register");
                 btn_register.addEventListener("click", () => {
-                    // listUser = JSON.parse(localStorage.getItem("Users"));
+                    listUser = JSON.parse(localStorage.getItem("Users"));
                     let fullName = document.querySelector("#Name").value;
                     let email = document.querySelector("#email").value;
                     let password = document.querySelector("#password").value;
                     let cf_password = document.querySelector("#Confirm_password").value;
-
                     if (invalid(fullName, email, password, cf_password)) {
                         user.id = id;
                         user.fullName = fullName;
