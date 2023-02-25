@@ -3,7 +3,7 @@
 }
 
 html {
-    font-size: 62.5%;
+    font-size: 55.5%;
 }
 
 body {
@@ -20,8 +20,7 @@ body {
 }
 
 .form {
-    width: 520px;
-    height: 600px;
+    width: 450px;
     border: 1px solid #ccc;
     display: flex;
     align-items: center;
@@ -33,13 +32,12 @@ body {
 }
 
 .form.form_register {
-    height: 700px;
 }
 
 .form h3 {
     font-size: 4rem;
     font-weight: 500;
-    line-height: 1.6;
+    line-height: 1.1;
     margin-top: 70px;
 }
 
@@ -114,8 +112,7 @@ input:not(:placeholder-shown) + label {
 
 .btn {
     position: relative;
-    margin-top: 15px;
-    margin: 30px;
+    margin: 30px 30px 16px;
     padding: 18px 45px;
     text-align: center;
     text-transform: uppercase;
