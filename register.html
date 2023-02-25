@@ -72,6 +72,15 @@
                     let password = document.querySelector("#password").value;
                     let cf_password = document.querySelector("#Confirm_password").value;
                     if (render.invalid(fullName, email, password, cf_password, 0)) {
+                        for (var item = 0; item < listUser.length; item++) {
+                            if (email === listUser[item].email) {
+                                render.fail_register(btn_register);
+                                console.log("Email already in use");
+                                return false;
+                            } else {
+                                // console.log("email valid");
+                            }
+                        }
                         user.id = id;
                         user.fullName = fullName;
                         user.email = email;
@@ -80,7 +89,7 @@
                         localStorage.setItem("Users", JSON.stringify(listUser));
                         id++;
                         user = {};
-                        console.log("test");
+                        console.log("Register successfully");
                         fullName = document.querySelector("#Name").value = "";
                         email = document.querySelector("#email").value = "";
                         password = document.querySelector("#password").value = "";

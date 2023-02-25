@@ -19,19 +19,23 @@ const render = {
                 } else {
                     let input = document.querySelector(".label:has(>#Name)");
                     this.timeout_error(input);
+                    console.log("Invalid name");
                 }
             }
             if (!regex_email.test(email)) {
                 let input = document.querySelector(".label:has(>#email)");
                 this.timeout_error(input);
+                console.log("Invalid email");
             }
             if (!regex_pass.test(password)) {
                 let input = document.querySelector(".label:has(>#password)");
                 this.timeout_error(input);
+                console.log("Invalid password");
             }
             if ((password !== cf_password) | (cf_password == "") && login === 0) {
                 let input = document.querySelector(".label:has(>#Confirm_password)");
                 this.timeout_error(input);
+                console.log("Password does not match");
             }
             return false;
         }
@@ -62,8 +66,6 @@ const render = {
     // hide and show password
     toogle_hide_password: function () {
         let btn = document.querySelectorAll('input[type="password"] ~ i');
-        console.log(btn);
-
         for (var item of btn) {
             item.addEventListener("click", (e) => {
                 if (e.target.getAttribute("class") == "fa-regular fa-eye") {

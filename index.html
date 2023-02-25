@@ -53,7 +53,6 @@
                     let email = document.querySelector("#email").value;
                     let password = document.querySelector("#password").value;
                     let user = JSON.parse(localStorage.getItem("Users")) || [];
-                    console.log(typeof user);
                     if (render.invalid("Đoàn Hải Duy", email, password, password, 1)) {
                         if (user.length == 0) {
                             render.fail_login(btn_login);
@@ -69,7 +68,6 @@
                     } else {
                         render.fail_login(btn_login);
                     }
-                    // console.log(user, email, password);
                 });
                 render.toogle_hide_password();
             };
