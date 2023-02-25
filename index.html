@@ -40,7 +40,7 @@
             <div class="lable">
                 <input placeholder=" " type="password" name="password" id="password" />
                 <label for="password">Password</label>
-                <i class="fa-solid fa-lock"></i>
+                <i class="fa-solid fa-eye-slash"></i>
             </div>
             <p class="forget">Remember Me <a href="#!">Forget Password</a></p>
             <div class="btn btn_login">Log in</div>
@@ -52,23 +52,26 @@
                 btn_login.addEventListener("click", () => {
                     let email = document.querySelector("#email").value;
                     let password = document.querySelector("#password").value;
-                    let user = JSON.parse(localStorage.getItem("Users"));
+                    let user = JSON.parse(localStorage.getItem("Users")) || [];
+                    console.log(typeof user);
                     if (render.invalid("Đoàn Hải Duy", email, password, password, 1)) {
+                        if (user.length == 0) {
+                            render.fail_login(btn_login);
+                        }
                         for (var item = 0; item < user.length; item++) {
                             if (email === user[item].email && password === user[item].password) {
                                 console.log("successfully");
                                 window.location = "https://example.com";
-                                break;
                             } else {
-                                console.log("fail");
                                 render.fail_login(btn_login);
                             }
                         }
                     } else {
                         render.fail_login(btn_login);
                     }
-                    console.log(user, email, password);
+                    // console.log(user, email, password);
                 });
+                render.toogle_hide_password();
             };
         </script>
         <script src="./assets/js/app.js"></script>
