@@ -17,20 +17,20 @@ const render = {
             if (!regex_name.test(fullName) && login === 0) {
                 if (regex_name.test(fullName)) {
                 } else {
-                    let input = document.querySelector(".lable:has(>#Name)");
+                    let input = document.querySelector(".label:has(>#Name)");
                     this.timeout_error(input);
                 }
             }
             if (!regex_email.test(email)) {
-                let input = document.querySelector(".lable:has(>#email)");
+                let input = document.querySelector(".label:has(>#email)");
                 this.timeout_error(input);
             }
             if (!regex_pass.test(password)) {
-                let input = document.querySelector(".lable:has(>#password)");
+                let input = document.querySelector(".label:has(>#password)");
                 this.timeout_error(input);
             }
             if ((password !== cf_password) | (cf_password == "") && login === 0) {
-                let input = document.querySelector(".lable:has(>#Confirm_password)");
+                let input = document.querySelector(".label:has(>#Confirm_password)");
                 this.timeout_error(input);
             }
             return false;
@@ -53,9 +53,9 @@ const render = {
 
     // Case fail to label error
     timeout_error: function (input) {
-        input.classList.add("lable-error");
+        input.classList.add("label-error");
         setTimeout(() => {
-            input.classList.remove("lable-error");
+            input.classList.remove("label-error");
         }, 1000);
     },
 

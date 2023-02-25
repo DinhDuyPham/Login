@@ -72,7 +72,7 @@ body {
     user-select: none;
 }
 
-.lable {
+.label {
     margin-top: 60px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -85,11 +85,11 @@ body {
     min-width: 70%;
 }
 
-.form.form_register .lable {
+.form.form_register .label {
     margin-top: 50px;
 }
 
-.lable::after {
+.label::after {
     position: absolute;
     content: "";
     display: block;
@@ -100,7 +100,7 @@ body {
     background-color: #ffffff;
 }
 
-.lable.lable-error::after {
+.label.label-error::after {
     -webkit-box-shadow: 0 0 20px #eee;
     box-shadow: 0 0 20px #eee;
     background-color: rgb(213, 141, 40);
@@ -108,14 +108,14 @@ body {
     animation: invalid 0.3s linear 4;
 }
 
-.lable.lable-error i {
+.label.label-error i {
     /* box-shadow: 0 0 20px #eee; */
     color: rgb(213, 141, 40);
     -webkit-animation: invalid 0.1s linear 4;
     animation: invalid 0.1s linear 4;
 }
 
-.lable input {
+.label input {
     border: none;
     background-color: transparent;
     outline: none;
@@ -125,7 +125,7 @@ body {
     padding: 10px 0;
 }
 
-.lable label {
+.label label {
     position: absolute;
     left: 0;
     top: 50%;
@@ -145,7 +145,7 @@ body {
     color: #e2e2e2;
 }
 
-.lable i {
+.label i {
     position: absolute;
     font-size: 2rem;
     right: 0;
