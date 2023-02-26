@@ -33,12 +33,12 @@
         <form autocomplete="off" action="" class="form">
             <h3>Login</h3>
             <div class="label">
-                <input placeholder=" " type="email" name="" id="email" />
+                <input required placeholder=" " type="email" name="" id="email" />
                 <label for="email">Email</label>
                 <i class="fa-regular fa-envelope"></i>
             </div>
             <div class="label">
-                <input placeholder=" " type="password" name="password" id="password" />
+                <input required placeholder=" " type="password" name="password" id="password" />
                 <label for="password">Password</label>
                 <i class="fa-solid fa-eye-slash"></i>
             </div>
@@ -56,6 +56,7 @@
                     if (render.invalid("Đoàn Hải Duy", email, password, password, 1)) {
                         if (user.length == 0) {
                             render.fail_login(btn_login);
+                            console.log("Login fail");
                         }
                         for (var item = 0; item < user.length; item++) {
                             if (email === user[item].email && password === user[item].password) {
@@ -63,10 +64,12 @@
                                 window.location = "https://example.com";
                             } else {
                                 render.fail_login(btn_login);
+                                console.log("Login fail");
                             }
                         }
                     } else {
                         render.fail_login(btn_login);
+                        console.log("Login fail");
                     }
                 });
                 render.toogle_hide_password();

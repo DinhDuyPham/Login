@@ -33,24 +33,24 @@
         <form autocomplete="off" action="" class="form form_register">
             <h3>Register</h3>
             <div class="label">
-                <input placeholder=" " type="text" name="Name" id="Name" />
+                <input required placeholder=" " type="text" name="Name" id="Name" />
                 <label for="Name">Full name</label>
                 <i class="fa-regular fa-user"></i>
             </div>
             <div class="label">
-                <input placeholder=" " type="email" name="" id="email" />
+                <input required placeholder=" " type="email" name="" id="email" />
                 <label for="email">Email</label>
                 <i class="fa-regular fa-envelope"></i>
             </div>
             <div class="label">
-                <input placeholder=" " type="password" name="password" id="password" />
+                <input required placeholder=" " type="password" name="password" id="password" />
                 <label for="password">Password</label>
                 <!-- <i class="fa-solid fa-lock"></i> -->
                 <i class="fa-solid fa-eye-slash"></i>
                 <!-- <i class="fa-regular fa-eye"></i> -->
             </div>
             <div class="label">
-                <input placeholder=" " type="password" name="Confirm_password" id="Confirm_password" />
+                <input required placeholder=" " type="password" name="Confirm_password" id="Confirm_password" />
                 <label for="Confirm_password ">Confirm password</label>
                 <!-- <i class="fa-solid fa-lock"></i> -->
                 <i class="fa-solid fa-eye-slash"></i>
@@ -75,7 +75,10 @@
                         for (var item = 0; item < listUser.length; item++) {
                             if (email === listUser[item].email) {
                                 render.fail_register(btn_register);
+                                let input = document.querySelector(".label:has(>#email)");
+                                render.timeout_error(input);
                                 console.log("Email already in use");
+                                console.log("Register fail");
                                 return false;
                             } else {
                                 // console.log("email valid");
@@ -96,6 +99,7 @@
                         cf_password = document.querySelector("#Confirm_password").value = "";
                     } else {
                         render.fail_register(btn_register);
+                        console.log("Register fail");
                     }
                 });
                 render.toogle_hide_password();

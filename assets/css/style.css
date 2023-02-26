@@ -5,7 +5,15 @@
 * Browsers: last 4 version
 */
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 * {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -23,8 +31,14 @@ body {
     background-size: cover;
     -o-object-fit: cover;
     object-fit: cover;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     font-family: "Poppins", sans-serif;
     height: 100vh;
@@ -34,11 +48,19 @@ body {
 .form {
     width: 450px;
     border: 1px solid #ccc;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     border-radius: 22px;
     background-color: rgba(255, 255, 255, 0.2);
+    -webkit-box-shadow: 0 0 20px #eee;
     box-shadow: 0 0 20px #eee;
     padding: 50px;
 }
@@ -59,7 +81,11 @@ body {
 
 .label {
     margin-top: 60px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     position: relative;
     width: 70%;
@@ -82,6 +108,7 @@ body {
 }
 
 .label.label-error::after {
+    -webkit-box-shadow: 0 0 20px #eee;
     box-shadow: 0 0 20px #eee;
     background-color: rgb(213, 141, 40);
     -webkit-animation: invalid 0.3s linear 4;
@@ -108,9 +135,13 @@ body {
     position: absolute;
     left: 0;
     top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     font-size: 2rem;
     opacity: 1;
+    -webkit-transition: 0.2s linear;
+    -o-transition: 0.2s linear;
     transition: 0.2s linear;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -125,6 +156,8 @@ body {
     font-size: 2rem;
     right: 0;
     top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     cursor: pointer;
 }
@@ -165,21 +198,32 @@ input:not(:placeholder-shown) + label {
     padding: 18px 45px;
     text-align: center;
     text-transform: uppercase;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
     transition: 0.5s;
     background-size: 200% auto;
     color: white;
+    -webkit-box-shadow: 0 0 20px #eee;
     box-shadow: 0 0 20px #eee;
     border-radius: 10px;
     cursor: pointer;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(#f6d365),
+        color-stop(51%, #fda085),
+        to(#f6d365)
+    );
+    background-image: -o-linear-gradient(left, #f6d365 0%, #fda085 51%, #f6d365 100%);
     background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
-}
-
-.form.form_register .btn {
-    margin-top: 35px;
 }
 
 .btn:hover {
     background-position: right center;
+}
+.form.form_register .btn {
+    margin-top: 35px;
 }
 
 .register {
@@ -199,42 +243,54 @@ input:not(:placeholder-shown) + label {
 
 @-webkit-keyframes invalid {
     0% {
+        -webkit-transform: translateX(-5px);
         transform: translateX(-5px);
     }
     25% {
+        -webkit-transform: translateX(0px);
         transform: translateX(0px);
     }
     40% {
+        -webkit-transform: translateX(5px);
         transform: translateX(5px);
     }
     60% {
+        -webkit-transform: translateX(-0px);
         transform: translateX(-0px);
     }
     75% {
+        -webkit-transform: translateX(-5px);
         transform: translateX(-5px);
     }
     100% {
+        -webkit-transform: translateX(0px);
         transform: translateX(0px);
     }
 }
 
 @keyframes invalid {
     0% {
+        -webkit-transform: translateX(-5px);
         transform: translateX(-5px);
     }
     25% {
+        -webkit-transform: translateX(0px);
         transform: translateX(0px);
     }
     40% {
+        -webkit-transform: translateX(5px);
         transform: translateX(5px);
     }
     60% {
+        -webkit-transform: translateX(-0px);
         transform: translateX(-0px);
     }
     75% {
+        -webkit-transform: translateX(-5px);
         transform: translateX(-5px);
     }
     100% {
+        -webkit-transform: translateX(0px);
         transform: translateX(0px);
     }
 }
