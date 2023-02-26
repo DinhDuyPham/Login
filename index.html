@@ -30,22 +30,23 @@
         <title>Form Validation - Login</title>
     </head>
     <body>
-        <form autocomplete="off" action="" class="form">
+        <form autocomplete="off" action="https://api-gateway.fullstack.edu.vn/action_page.php" class="form">
             <h3>Login</h3>
             <div class="label">
-                <input required placeholder=" " type="email" name="" id="email" />
+                <input placeholder=" " type="email" name="email" id="email" />
                 <label for="email">Email</label>
                 <i class="fa-regular fa-envelope"></i>
             </div>
             <div class="label">
-                <input required placeholder=" " type="password" name="password" id="password" />
+                <input placeholder=" " type="password" name="password" id="password" />
                 <label for="password">Password</label>
                 <i class="fa-solid fa-eye-slash"></i>
             </div>
             <p class="forget">Remember Me <a href="#!">Forget Password</a></p>
-            <div class="btn btn_login">Log in</div>
+            <button class="btn btn_login">Log in</button>
             <p class="register">Don't have a account <a href="./register.html" id="register">Register</a></p>
         </form>
+        <button title="Click to change background" class="btn btn-change-bg"><i class="fa-solid fa-rotate"></i></button>
         <script>
             window.onload = () => {
                 let btn_login = document.querySelector(".btn.btn_login");
@@ -57,22 +58,28 @@
                         if (user.length == 0) {
                             render.fail_login(btn_login);
                             console.log("Login fail");
+                            btn_login.setAttribute("type", "button");
                         }
                         for (var item = 0; item < user.length; item++) {
                             if (email === user[item].email && password === user[item].password) {
                                 console.log("successfully");
-                                window.location = "https://example.com";
+                                btn_login.setAttribute("type", "submit");
+                                break;
+                                // window.location = "https://example.com";
                             } else {
                                 render.fail_login(btn_login);
                                 console.log("Login fail");
+                                btn_login.setAttribute("type", "button");
                             }
                         }
                     } else {
                         render.fail_login(btn_login);
                         console.log("Login fail");
+                        btn_login.setAttribute("type", "button");
                     }
                 });
-                render.toogle_hide_password();
+                render.toggle_hide_password();
+                render.change_background();
             };
         </script>
         <script src="./assets/js/app.js"></script>

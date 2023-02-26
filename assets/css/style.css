@@ -12,6 +12,14 @@
 * Browsers: last 4 version
 */
 
+:root {
+    --color-text: #fff;
+    --color-black: #000;
+    --color-shadow: #eee;
+    --color-shadow-black: #111;
+    --color-text-reverse: #000;
+}
+
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -26,7 +34,7 @@ html {
 }
 
 body {
-    background-image: url(../img/background.jpg);
+    background-image: url(../img/background-1.jpg);
     font-size: 1.6rem;
     background-size: cover;
     -o-object-fit: cover;
@@ -42,12 +50,15 @@ body {
     align-items: center;
     font-family: "Poppins", sans-serif;
     height: 100vh;
-    color: #fff;
+    color: var(--color-text);
+    flex-direction: column;
+    transition: 0.5s linear;
 }
 
 .form {
+    transition: 0.5s linear;
     width: 450px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-shadow);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -59,9 +70,9 @@ body {
     -ms-flex-direction: column;
     flex-direction: column;
     border-radius: 22px;
-    background-color: rgba(255, 255, 255, 0.2);
-    -webkit-box-shadow: 0 0 20px #eee;
-    box-shadow: 0 0 20px #eee;
+    background-color: rgba(255, 255, 255, 0.1);
+    -webkit-box-shadow: 0 0 20px var(--color-shadow);
+    box-shadow: 0 0 20px var(--color-shadow);
     padding: 50px;
 }
 
@@ -77,6 +88,7 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    transition: 0.1s linear;
 }
 
 .label {
@@ -104,19 +116,21 @@ body {
     width: 100%;
     left: 0;
     bottom: 0;
-    background-color: #ffffff;
+    background-color: var(--color-text);
+    transition: 0.5s linear;
 }
 
 .label.label-error::after {
-    -webkit-box-shadow: 0 0 20px #eee;
-    box-shadow: 0 0 20px #eee;
-    background-color: rgb(213, 141, 40);
+    -webkit-box-shadow: 0 0 20px var(--color-shadow);
+    box-shadow: 0 0 20px var(--color-shadow);
+    background-color: var(--color-text-reverse);
     -webkit-animation: invalid 0.3s linear 4;
     animation: invalid 0.3s linear 4;
+    transition: 0.5s linear;
 }
 
 .label.label-error i {
-    color: rgb(213, 141, 40);
+    color: var(--color-text-reverse);
     -webkit-animation: invalid 0.1s linear 4;
     animation: invalid 0.1s linear 4;
 }
@@ -127,8 +141,9 @@ body {
     outline: none;
     font-size: 2rem;
     width: 90%;
-    color: #fff;
+    color: var(--color-text);
     padding: 10px 0;
+    transition: 0.5s linear;
 }
 
 .label label {
@@ -140,15 +155,15 @@ body {
     transform: translateY(-50%);
     font-size: 2rem;
     opacity: 1;
-    -webkit-transition: 0.2s linear;
-    -o-transition: 0.2s linear;
-    transition: 0.2s linear;
+    -webkit-transition: 0.5s linear;
+    -o-transition: 0.5s linear;
+    transition: 0.5s linear;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     cursor: text;
-    color: #e2e2e2;
+    color: var(--color-shadow);
 }
 
 .label i {
@@ -160,6 +175,7 @@ body {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     cursor: pointer;
+    transition: 0.5s linear;
 }
 
 input:not(:-moz-placeholder-shown) + label {
@@ -188,6 +204,8 @@ input:not(:placeholder-shown) + label {
 }
 
 .btn {
+    outline: none;
+    border: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -200,11 +218,11 @@ input:not(:placeholder-shown) + label {
     text-transform: uppercase;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
-    transition: 0.5s;
+    transition: 0.5s linear;
     background-size: 200% auto;
-    color: white;
-    -webkit-box-shadow: 0 0 20px #eee;
-    box-shadow: 0 0 20px #eee;
+    color: var(--color-shadow);
+    -webkit-box-shadow: 0 0 20px var(--color-shadow);
+    box-shadow: 0 0 20px var(--color-shadow);
     border-radius: 10px;
     cursor: pointer;
     background-image: -webkit-gradient(
@@ -219,6 +237,26 @@ input:not(:placeholder-shown) + label {
     background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
 }
 
+.btn-change-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    padding: 20px;
+    border-radius: 50%;
+    transition: 0.5s linear;
+}
+
+.btn-change-bg i {
+    transition: 0.5s linear;
+}
+
+.btn-change-bg:hover > i {
+    transform: rotate(180deg);
+}
+
 .btn:hover {
     background-position: right center;
 }
@@ -226,13 +264,16 @@ input:not(:placeholder-shown) + label {
     margin-top: 35px;
 }
 
-.register {
-    margin-top: 10px;
+.register,
+.forget {
+    transition: 0.5s linear;
+    color: var(--color-text);
 }
 
 .form a {
-    color: #271f1f;
+    color: var(--color-text);
     font-weight: 700;
+    transition: 0.5s linear;
 }
 
 .btn_register-invalid,
@@ -292,5 +333,15 @@ input:not(:placeholder-shown) + label {
     100% {
         -webkit-transform: translateX(0px);
         transform: translateX(0px);
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .form {
+        width: 350px;
+    }
+
+    .label label {
+        font-size: 1.5rem;
     }
 }

@@ -30,43 +30,51 @@
         <title>Form Validation - Register</title>
     </head>
     <body>
-        <form autocomplete="off" action="" class="form form_register">
+        <form
+            method="POST"
+            autocomplete="off"
+            action="https://api-gateway.fullstack.edu.vn/action_page.php"
+            class="form form_register"
+        >
             <h3>Register</h3>
             <div class="label">
-                <input required placeholder=" " type="text" name="Name" id="Name" />
+                <input placeholder=" " type="text" name="Name" id="Name" />
                 <label for="Name">Full name</label>
                 <i class="fa-regular fa-user"></i>
             </div>
             <div class="label">
-                <input required placeholder=" " type="email" name="" id="email" />
+                <input placeholder=" " type="email" name="email" id="email" />
                 <label for="email">Email</label>
                 <i class="fa-regular fa-envelope"></i>
             </div>
             <div class="label">
-                <input required placeholder=" " type="password" name="password" id="password" />
+                <input placeholder=" " type="password" name="password" id="password" />
                 <label for="password">Password</label>
                 <!-- <i class="fa-solid fa-lock"></i> -->
                 <i class="fa-solid fa-eye-slash"></i>
                 <!-- <i class="fa-regular fa-eye"></i> -->
             </div>
             <div class="label">
-                <input required placeholder=" " type="password" name="Confirm_password" id="Confirm_password" />
+                <input placeholder=" " type="password" name="Confirm_password" id="Confirm_password" />
                 <label for="Confirm_password">Confirm password</label>
                 <!-- <i class="fa-solid fa-lock"></i> -->
                 <i class="fa-solid fa-eye-slash"></i>
                 <!-- <i class="fa-regular fa-eye active"></i> -->
             </div>
-            <div class="btn btn_register">Register</div>
+            <button class="btn btn_register">Register</button>
             <p class="register">Already have an account? <a href="./index.html" id="Login">Login</a></p>
         </form>
+        <button title="Click to change background" class="btn btn-change-bg"><i class="fa-solid fa-rotate"></i></button>
+
         <script>
             window.onload = function () {
                 let listUser = [];
                 let user = {};
-                let id = 1;
                 let btn_register = document.querySelector(".btn.btn_register");
                 btn_register.addEventListener("click", () => {
                     listUser = JSON.parse(localStorage.getItem("Users")) || [];
+                    let id = listUser.length == 0 ? 0 : listUser[listUser.length - 1].id;
+                    console.log(listUser);
                     let fullName = document.querySelector("#Name").value;
                     let email = document.querySelector("#email").value;
                     let password = document.querySelector("#password").value;
@@ -79,30 +87,34 @@
                                 render.timeout_error(input);
                                 console.log("Email already in use");
                                 console.log("Register fail");
+                                btn_register.setAttribute("type", "button");
                                 return false;
                             } else {
                                 // console.log("email valid");
                             }
                         }
+                        id++;
                         user.id = id;
                         user.fullName = fullName;
                         user.email = email;
                         user.password = password;
                         listUser.push(user);
                         localStorage.setItem("Users", JSON.stringify(listUser));
-                        id++;
                         user = {};
                         console.log("Register successfully");
-                        fullName = document.querySelector("#Name").value = "";
-                        email = document.querySelector("#email").value = "";
-                        password = document.querySelector("#password").value = "";
-                        cf_password = document.querySelector("#Confirm_password").value = "";
+                        btn_register.setAttribute("type", "submit");
+                        // email = document.querySelector("#email").value = "";
+                        // password = document.querySelector("#password").value = "";
+                        // cf_password = document.querySelector("#Confirm_password").value = "";
+                        // fullName = document.querySelector("#Name").value = "";
                     } else {
                         render.fail_register(btn_register);
                         console.log("Register fail");
+                        btn_register.setAttribute("type", "button");
                     }
                 });
-                render.toogle_hide_password();
+                render.toggle_hide_password();
+                render.change_background();
             };
         </script>
         <script src="./assets/js/app.js"></script>

@@ -14,6 +14,7 @@ const render = {
         ) {
             return true;
         } else {
+            // return true;
             if (!regex_name.test(fullName) && login === 0) {
                 if (regex_name.test(fullName)) {
                 } else {
@@ -64,7 +65,7 @@ const render = {
     },
 
     // hide and show password
-    toogle_hide_password: function () {
+    toggle_hide_password: function () {
         let btn = document.querySelectorAll('input[type="password"] ~ i');
         for (var item of btn) {
             item.addEventListener("click", (e) => {
@@ -77,5 +78,79 @@ const render = {
                 }
             });
         }
+    },
+
+    // Change background
+    change_background: function () {
+        const imgs = [
+            {
+                img: "assets/img/background-1.jpg",
+                dark: true,
+            },
+            {
+                img: "assets/img/background-2.jpg",
+                dark: true,
+            },
+            {
+                img: "assets/img/background-3.jpg",
+                dark: true,
+            },
+            {
+                img: "assets/img/background-4.jpg",
+                dark: true,
+            },
+            {
+                img: "assets/img/background-5.jpg",
+                dark: true,
+            },
+            {
+                img: "assets/img/background-6.jpg",
+                dark: false,
+            },
+            {
+                img: "assets/img/background-7.jpg",
+                dark: false,
+            },
+            {
+                img: "assets/img/background-8.jpg",
+                dark: false,
+            },
+            {
+                img: "assets/img/background-9.jpg",
+                dark: false,
+            },
+            {
+                img: "assets/img/background-10.jpg",
+                dark: false,
+            },
+        ];
+        imgs.sort(() => {
+            return Math.random() - 0.5;
+        });
+        let i = 0;
+        document.querySelector(".btn.btn-change-bg").addEventListener("click", () => {
+            var img = imgs[i].img;
+            // var img = new Image();
+            // img.src = imgs[i].img;
+            // img.onload = function () {
+            console.log(img);
+            if (imgs[i].dark) {
+                document.querySelector("body").style.backgroundImage = "url(" + img + ")";
+                document.documentElement.style.setProperty("--color-text", "#FFF");
+                document.documentElement.style.setProperty("--color-shadow", "#EEE");
+                document.documentElement.style.setProperty("--color-text-reverse", "#000");
+            } else {
+                document.querySelector("body").style.backgroundImage = "url(" + img + ")";
+                document.documentElement.style.setProperty("--color-text", "#000");
+                document.documentElement.style.setProperty("--color-shadow", "#111");
+                document.documentElement.style.setProperty("--color-text-reverse", "#FFF");
+            }
+            // };
+
+            i++;
+            if (i >= 10) {
+                i = 1;
+            }
+        });
     },
 };
