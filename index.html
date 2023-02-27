@@ -55,12 +55,16 @@
         <script>
             window.onload = () => {
                 let btn_login = document.querySelector(".btn.btn_login");
+                btn_login.focus();
                 btn_login.addEventListener("keyup", (event) => {
                     if (event.keyCode === 13 && event.ctrlKey) {
-                        button.click();
+                        click_btn();
                     }
                 });
-                btn_login.addEventListener("click", (e) => {
+                // let img = new image();
+                btn_login.addEventListener("click", click_btn);
+                render.toggle_hide_password();
+                function click_btn() {
                     let email = document.querySelector("#email").value;
                     let password = document.querySelector("#password").value;
                     let user = JSON.parse(localStorage.getItem("Users")) || [];
@@ -87,8 +91,7 @@
                         console.log("Login fail");
                         btn_login.setAttribute("type", "button");
                     }
-                });
-                render.toggle_hide_password();
+                }
                 render.change_background();
             };
         </script>

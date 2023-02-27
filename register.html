@@ -71,7 +71,9 @@
                 let listUser = [];
                 let user = {};
                 let btn_register = document.querySelector(".btn.btn_register");
-                btn_register.addEventListener("click", () => {
+                btn_register.focus();
+                btn_register.addEventListener("click", click_btn);
+                function click_btn() {
                     listUser = JSON.parse(localStorage.getItem("Users")) || [];
                     let id = listUser.length == 0 ? 0 : listUser[listUser.length - 1].id;
                     console.log(listUser);
@@ -112,7 +114,7 @@
                         console.log("Register fail");
                         btn_register.setAttribute("type", "button");
                     }
-                });
+                }
                 render.toggle_hide_password();
                 render.change_background();
             };
