@@ -70,6 +70,7 @@
                     let email = document.querySelector("#email").value;
                     let password = document.querySelector("#password").value;
                     let user = JSON.parse(localStorage.getItem("Users")) || [];
+                    let flag = false;
                     if (render.invalid("Đoàn Hải Duy", email, password, password, 1)) {
                         console.log("avc");
                         if (user.length == 0) {
@@ -81,6 +82,7 @@
                             if (email === user[item].email && password === user[item].password) {
                                 console.log("successfully");
                                 btn_login.setAttribute("type", "submit");
+                                flag = true;
                                 break;
                             } else {
                                 render.fail_login(btn_login);
@@ -89,9 +91,12 @@
                                 btn_login.setAttribute("type", "button");
                             }
                         }
+                        if (!flag) {
+                            let input = document.querySelector(".label:has(>#password)");
+                            render.timeout_error(input);
+                            input.querySelector("span").innerText = "your password is not correct.";
+                        }
                     } else {
-                        console.log("avc");
-
                         render.fail_login(btn_login);
                         console.log("Login fail");
                         btn_login.setAttribute("type", "button");
