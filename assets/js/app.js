@@ -17,26 +17,56 @@ const render = {
             // return true;
             if (!regex_name.test(fullName) && login === 0) {
                 if (regex_name.test(fullName)) {
+                    render.set_vib(document.querySelector("#Name").parentElement, false);
                 } else {
                     let input = document.querySelector(".label:has(>#Name)");
                     this.timeout_error(input);
+                    input.querySelector("span").innerText = "Invalid name, please enter another name";
                     console.log("Invalid name");
                 }
             }
+
             if (!regex_email.test(email)) {
                 let input = document.querySelector(".label:has(>#email)");
                 this.timeout_error(input);
                 console.log("Invalid email");
+                input.querySelector("span").innerText = "Invalid email, please enter a valid email address";
+            } else {
+                console.log(document.querySelector("#email").parentElement.querySelector("span"));
+                render.set_vib(document.querySelector("#email").parentElement, false);
             }
             if (!regex_pass.test(password)) {
                 let input = document.querySelector(".label:has(>#password)");
                 this.timeout_error(input);
                 console.log("Invalid password");
+                if (login === 1) {
+                    input.querySelector("span").innerText = "your password is not correct.";
+                    return false;
+                } else {
+                    if (password.length < 8) {
+                        input.querySelector("span").innerText = "Your password must be at least 8 characters long.";
+                        console.log(password.length);
+                    }
+                    if (password.length > 8) {
+                        input.querySelector("span").innerText = "Your password must include letters and numbers.";
+                    }
+                }
+            } else {
+                if (login === 1) {
+                } else {
+                    render.set_vib(document.querySelector("#password").parentElement, false);
+                }
             }
             if ((password !== cf_password) | (cf_password == "") && login === 0) {
                 let input = document.querySelector(".label:has(>#Confirm_password)");
                 this.timeout_error(input);
                 console.log("Password does not match");
+            } else {
+                if (login === 1) {
+                    return false;
+                } else {
+                    render.set_vib(document.querySelector("#Confirm_password").parentElement, false);
+                }
             }
             return false;
         }
@@ -47,6 +77,7 @@ const render = {
         setTimeout(() => {
             btn.classList.remove("btn_login-invalid");
         }, 1000);
+        // this.set_vib(btn, true);
     },
     // Case register fail
     fail_register: function (btn) {
@@ -62,6 +93,7 @@ const render = {
         setTimeout(() => {
             input.classList.remove("label-error");
         }, 1000);
+        render.set_vib(input, true);
     },
 
     // hide and show password
@@ -124,6 +156,8 @@ const render = {
                 dark: false,
             },
         ];
+        let bgr = JSON.parse(localStorage.getItem("background"));
+        document.querySelector("body").style.backgroundImage = "url(" + bgr + ")";
         imgs.sort(() => {
             return Math.random() - 0.5;
         });
@@ -134,6 +168,8 @@ const render = {
             // img.src = imgs[i].img;
             // img.onload = function () {
             console.log(img);
+            localStorage.setItem("background", JSON.stringify(imgs[i].img));
+
             if (imgs[i].dark) {
                 document.querySelector("body").style.backgroundImage = "url(" + img + ")";
                 document.documentElement.style.setProperty("--color-text", "#FFF");
@@ -152,5 +188,28 @@ const render = {
                 i = 1;
             }
         });
+    },
+
+    // set visibility for span error
+    set_vib: function (btn, visible) {
+        let label_error = btn.querySelector("span");
+        // console.log(label_error);
+        if (visible) {
+            // console.log("90");
+            label_error.style.visibility = "visible";
+        } else {
+            // console.log("100");
+            label_error.style.visibility = "hidden";
+        }
+    },
+
+    // delete span error when focus input
+    delete_error: function (input) {
+        let a = input.querySelectorAll("input");
+        for (let item of a) {
+            item.addEventListener("focus", () => {
+                this.set_vib(item.parentElement, false);
+            });
+        }
     },
 };

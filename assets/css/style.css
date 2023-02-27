@@ -18,6 +18,7 @@
     --color-shadow: #eee;
     --color-shadow-black: #111;
     --color-text-reverse: #000;
+    --color-error: #f02849;
 }
 
 * {
@@ -34,7 +35,8 @@ html {
 }
 
 body {
-    background-image: url(../img/background-1.jpg);
+    /* background-image: #000; */
+    background: #2374e1;
     font-size: 1.6rem;
     background-size: cover;
     -o-object-fit: cover;
@@ -123,16 +125,18 @@ body {
 .label.label-error::after {
     -webkit-box-shadow: 0 0 20px var(--color-shadow);
     box-shadow: 0 0 20px var(--color-shadow);
-    background-color: var(--color-text-reverse);
+    background: var(--color-error);
+    /* background-color: var(--color-text-reverse); */
     -webkit-animation: invalid 0.3s linear 4;
     animation: invalid 0.3s linear 4;
     transition: 0.5s linear;
 }
 
 .label.label-error i {
-    color: var(--color-text-reverse);
-    -webkit-animation: invalid 0.1s linear 4;
-    animation: invalid 0.1s linear 4;
+    /* color: var(--color-text-reverse); */
+    color: var(--color-error);
+    /* -webkit-animation: invalid 0.1s linear 4; */
+    /* animation: invalid 0.1s linear 4; */
 }
 
 .label input {
@@ -144,6 +148,7 @@ body {
     color: var(--color-text);
     padding: 10px 0;
     transition: 0.5s linear;
+    position: relative;
 }
 
 .label label {
@@ -190,8 +195,12 @@ input:not(:-ms-input-placeholder) + label {
 
 input:focus + label,
 input:not(:placeholder-shown) + label {
-    opacity: 0;
-    visibility: hidden;
+    /* opacity: 0;
+    visibility: hidden; */
+    top: 0;
+    transition: 0.2s linear;
+    font-weight: 600;
+    font-size: 1.3rem;
 }
 
 .forget {
@@ -344,4 +353,36 @@ input:not(:placeholder-shown) + label {
     .label label {
         font-size: 1.5rem;
     }
+    body {
+        background-origin: content-box;
+    }
+}
+
+.label span {
+    position: absolute;
+    bottom: -90%;
+    transition: 0.2s linear;
+    font-size: 1.5rem;
+    color: var(--color-error);
+    display: -webkit-box;
+    letter-spacing: 2px;
+    visibility: hidden;
+    font-weight: 500;
+    width: 100%;
+    background-color: #000000;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.label span.error-cf,
+.label span.error-login {
+    bottom: -60%;
+}
+
+.label.label-error span {
+    visibility: visible;
+    /* opacity: 1; */
+    /* color: var(--color-text-reverse); */
+    /* -webkit-animation: invalid 0.1s linear 4; */
+    /* animation: invalid 0.1s linear 4; */
 }

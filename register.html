@@ -41,17 +41,22 @@
                 <input placeholder=" " type="text" name="Name" id="Name" />
                 <label for="Name">Full name</label>
                 <i class="fa-regular fa-user"></i>
+                <span>Invalid name, please enter another name</span>
             </div>
             <div class="label">
                 <input placeholder=" " type="email" name="email" id="email" />
                 <label for="email">Email</label>
                 <i class="fa-regular fa-envelope"></i>
-            </div>
+                <span>Please enter a valid email address</span>
+            </div
+            iv>
             <div class="label">
                 <input placeholder=" " type="password" name="password" id="password" />
                 <label for="password">Password</label>
                 <!-- <i class="fa-solid fa-lock"></i> -->
                 <i class="fa-solid fa-eye-slash"></i>
+                <span>Your password must be at least 8 characters long.</span>
+               
                 <!-- <i class="fa-regular fa-eye"></i> -->
             </div>
             <div class="label">
@@ -59,6 +64,8 @@
                 <label for="Confirm_password">Confirm password</label>
                 <!-- <i class="fa-solid fa-lock"></i> -->
                 <i class="fa-solid fa-eye-slash"></i>
+                <span class="error-cf">password does not match</span>
+                
                 <!-- <i class="fa-regular fa-eye active"></i> -->
             </div>
             <button class="btn btn_register">Register</button>
@@ -88,6 +95,7 @@
                                 let input = document.querySelector(".label:has(>#email)");
                                 render.timeout_error(input);
                                 console.log("Email already in use");
+                                input.querySelector("span").innerText = "Email already in use";
                                 console.log("Register fail");
                                 btn_register.setAttribute("type", "button");
                                 return false;
@@ -95,6 +103,7 @@
                                 // console.log("email valid");
                             }
                         }
+                        
                         id++;
                         user.id = id;
                         user.fullName = fullName;
@@ -115,8 +124,10 @@
                         btn_register.setAttribute("type", "button");
                     }
                 }
+                console.log(document.querySelector('form'));
                 render.toggle_hide_password();
                 render.change_background();
+                render.delete_error(document.querySelector('form'))
             };
         </script>
         <script src="./assets/js/app.js"></script>

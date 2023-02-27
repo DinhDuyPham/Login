@@ -41,11 +41,13 @@
                 <input placeholder=" " type="email" name="email" id="email" />
                 <label for="email">Email</label>
                 <i class="fa-regular fa-envelope"></i>
+                <span>Please enter a valid email address</span>
             </div>
             <div class="label">
                 <input placeholder=" " type="password" name="password" id="password" />
                 <label for="password">Password</label>
                 <i class="fa-solid fa-eye-slash"></i>
+                <span class="error-login">your password is not correct.</span>
             </div>
             <p class="forget">Remember Me <a href="#!">Forget Password</a></p>
             <button class="btn btn_login">Log in</button>
@@ -69,6 +71,7 @@
                     let password = document.querySelector("#password").value;
                     let user = JSON.parse(localStorage.getItem("Users")) || [];
                     if (render.invalid("Đoàn Hải Duy", email, password, password, 1)) {
+                        console.log("avc");
                         if (user.length == 0) {
                             render.fail_login(btn_login);
                             console.log("Login fail");
@@ -79,20 +82,23 @@
                                 console.log("successfully");
                                 btn_login.setAttribute("type", "submit");
                                 break;
-                                // window.location = "https://example.com";
                             } else {
                                 render.fail_login(btn_login);
                                 console.log("Login fail");
+                                // render.timeout_error(input);
                                 btn_login.setAttribute("type", "button");
                             }
                         }
                     } else {
+                        console.log("avc");
+
                         render.fail_login(btn_login);
                         console.log("Login fail");
                         btn_login.setAttribute("type", "button");
                     }
                 }
                 render.change_background();
+                render.delete_error(document.querySelector("form"));
             };
         </script>
         <script src="./assets/js/app.js"></script>
