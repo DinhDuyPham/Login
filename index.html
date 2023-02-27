@@ -30,7 +30,12 @@
         <title>Form Validation - Login</title>
     </head>
     <body>
-        <form autocomplete="off" action="https://api-gateway.fullstack.edu.vn/action_page.php" class="form">
+        <form
+            method="POST"
+            autocomplete="off"
+            action="https://api-gateway.fullstack.edu.vn/action_page.php"
+            class="form"
+        >
             <h3>Login</h3>
             <div class="label">
                 <input placeholder=" " type="email" name="email" id="email" />
@@ -50,7 +55,12 @@
         <script>
             window.onload = () => {
                 let btn_login = document.querySelector(".btn.btn_login");
-                btn_login.addEventListener("click", () => {
+                btn_login.addEventListener("keyup", (event) => {
+                    if (event.keyCode === 13 && event.ctrlKey) {
+                        button.click();
+                    }
+                });
+                btn_login.addEventListener("click", (e) => {
                     let email = document.querySelector("#email").value;
                     let password = document.querySelector("#password").value;
                     let user = JSON.parse(localStorage.getItem("Users")) || [];
