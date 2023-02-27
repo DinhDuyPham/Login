@@ -84,8 +84,8 @@
                     listUser = JSON.parse(localStorage.getItem("Users")) || [];
                     let id = listUser.length == 0 ? 0 : listUser[listUser.length - 1].id;
                     console.log(listUser);
-                    let fullName = document.querySelector("#Name").value;
-                    let email = document.querySelector("#email").value;
+                    let fullName = document.querySelector("#Name").value.trim();
+                    let email = document.querySelector("#email").value.trim();
                     let password = document.querySelector("#password").value;
                     let cf_password = document.querySelector("#Confirm_password").value;
                     if (render.invalid(fullName, email, password, cf_password, 0)) {

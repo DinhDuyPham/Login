@@ -35,8 +35,7 @@ html {
 }
 
 body {
-    /* background-image: #000; */
-    background: #2374e1;
+    background-image: url(../img/background-1.jpg);
     font-size: 1.6rem;
     background-size: cover;
     -o-object-fit: cover;

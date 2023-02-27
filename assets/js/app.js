@@ -156,7 +156,7 @@ const render = {
                 dark: false,
             },
         ];
-        let bgr = JSON.parse(localStorage.getItem("background"));
+        let bgr = JSON.parse(localStorage.getItem("background")) || "assets/img/background-1.jpg";
         document.querySelector("body").style.backgroundImage = "url(" + bgr + ")";
         imgs.sort(() => {
             return Math.random() - 0.5;
