@@ -174,11 +174,13 @@ const render = {
                 document.documentElement.style.setProperty("--color-text", "#FFF");
                 document.documentElement.style.setProperty("--color-shadow", "#EEE");
                 document.documentElement.style.setProperty("--color-text-reverse", "#000");
+                document.documentElement.style.setProperty("--color-background-form", "rgba(000, 000, 000, 0.3)");
             } else {
                 document.querySelector("body").style.backgroundImage = "url(" + img + ")";
                 document.documentElement.style.setProperty("--color-text", "#000");
                 document.documentElement.style.setProperty("--color-shadow", "#111");
                 document.documentElement.style.setProperty("--color-text-reverse", "#FFF");
+                document.documentElement.style.setProperty("--color-background-form", "rgba(#fff, #fff, #fff, 0.3)");
             }
             // };
 
@@ -217,9 +219,9 @@ const render = {
         input.forEach((item) => {
             item.oninput = function () {
                 if (item.value.length !== 0) {
-                    item.parentElement.classList.add("acb");
+                    item.parentElement.classList.add("set_progress");
                 } else {
-                    item.parentElement.classList.remove("acb");
+                    item.parentElement.classList.remove("set_progress");
                 }
             };
         });

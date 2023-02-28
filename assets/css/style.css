@@ -19,6 +19,7 @@
     --color-shadow-black: #111;
     --color-text-reverse: #000;
     --color-error: #f02849;
+    --color-background-form: rgba(000, 000, 000, 0.4);
 }
 
 * {
@@ -71,13 +72,17 @@ body {
     -ms-flex-direction: column;
     flex-direction: column;
     border-radius: 22px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--color-background-form);
     -webkit-box-shadow: 0 0 20px var(--color-shadow);
     box-shadow: 0 0 20px var(--color-shadow);
     padding: 50px 30px 25px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    /* backdrop-filter: contrast(200%); */
 }
 
 .form h3 {
+    z-index: 1000;
     font-size: 5rem;
     font-weight: 500;
     line-height: 1;
@@ -213,7 +218,7 @@ input:not(:placeholder-shown) + label {
     animation: progress 0.4s linear;
 }
 
-.label.acb::after {
+.label.set_progress::after {
     background-color: #6a5af9;
 }
 /* 
@@ -251,7 +256,6 @@ input:not(:placeholder-shown) + label {
     margin: 35px 0;
     padding: 18px 45px;
     text-align: center;
-    text-transform: uppercase;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s linear;
@@ -269,6 +273,7 @@ input:not(:placeholder-shown) + label {
         color-stop(51%, #fda085),
         to(#f6d365)
     );
+    font-weight: 700;
     background-image: -o-linear-gradient(left, #f6d365 0%, #fda085 51%, #f6d365 100%);
     background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
 }
@@ -388,23 +393,28 @@ input:not(:placeholder-shown) + label {
 
 .label span {
     position: absolute;
-    bottom: -90%;
+    bottom: -80%;
     transition: 0.2s linear;
     font-size: 1.5rem;
     color: var(--color-error);
     display: -webkit-box;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     visibility: hidden;
     font-weight: 500;
+    font-weight: 700;
     width: 100%;
-    background-color: #000000;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    /* background-color: #000000; */
     border-radius: 5px;
     padding: 2px;
 }
 
 .label span.error-cf,
 .label span.error-login {
-    bottom: -60%;
+    bottom: -50%;
 }
 
 .label.label-error span {
