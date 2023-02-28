@@ -415,6 +415,10 @@ input:not(:placeholder-shown) + label {
 .label span.error-cf,
 .label span.error-login {
     bottom: -50%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .label.label-error span {
