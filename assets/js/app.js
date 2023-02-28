@@ -64,7 +64,7 @@ const render = {
                 if (login === 1) {
                     return false;
                 } else {
-                    render.set_vib(document.querySelector("#Confirm_password").parentElement, false);
+                    this.set_vib(document.querySelector("#Confirm_password").parentElement, false);
                 }
             }
             return false;

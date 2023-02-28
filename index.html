@@ -37,6 +37,7 @@
             class="form"
         >
             <h3>Login</h3>
+            <span class="login-many-time hide"></span>
             <div class="label">
                 <input placeholder=" " type="email" name="email" id="email" />
                 <label for="email">Email</label>
@@ -59,7 +60,11 @@
         <script>
             window.onload = () => {
                 let btn_login = document.querySelector(".btn.btn_login");
+                let login_fail = 0;
                 btn_login.focus();
+                let count_time = 30;
+                let interval;
+                let i = 1;
                 btn_login.addEventListener("keyup", (event) => {
                     if (event.keyCode === 13 && event.ctrlKey) {
                         click_btn();
@@ -69,6 +74,7 @@
                 btn_login.addEventListener("click", click_btn);
                 render.toggle_hide_password();
                 function click_btn() {
+                    console.log(login_fail);
                     let email = document.querySelector("#email").value;
                     let password = document.querySelector("#password").value;
                     let user = JSON.parse(localStorage.getItem("Users")) || [];
@@ -77,6 +83,7 @@
                         console.log("avc");
                         if (user.length == 0) {
                             render.fail_login(btn_login);
+                            login_fail++;
                             console.log("Login fail");
                             btn_login.setAttribute("type", "button");
                         }
@@ -94,19 +101,49 @@
                             }
                         }
                         if (!flag) {
+                            login_fail++;
                             let input = document.querySelector(".label:has(>#password)");
                             render.timeout_error(input);
                             input.querySelector("span").innerText = "your password is not correct.";
                         }
                     } else {
                         render.fail_login(btn_login);
+                        login_fail++;
                         console.log("Login fail");
+
                         btn_login.setAttribute("type", "button");
+                    }
+                    // console.log(document.querySelector("#password").parentElement.querySelector("span"));
+                    if (login_fail === 10) {
+                        btn_login.removeEventListener("click", click_btn);
+                        document.querySelector("#register").setAttribute("href", "#!");
+                        function run() {
+                            let element_error = document.querySelector(".login-many-time");
+                            if (login_fail >= 10) {
+                                element_error.classList.remove("hide");
+                                element_error.innerText = `ERROR: Too many failed login attempts. Please try again in ${count_time}s.`;
+                                btn_login.classList.add("disable");
+                            }
+
+                            if (count_time <= 0) {
+                                clearInterval(interval);
+                                btn_login.classList.remove("disable");
+                                document.querySelector("#register").setAttribute("href", "./register.html");
+                                document.querySelector(".login-many-time").classList.add("hide");
+                                login_fail = 0;
+                                count_time = 30 * i;
+                                btn_login.addEventListener("click", click_btn);
+                            }
+                            count_time--;
+                        }
+                        interval = setInterval(run, 1000);
+                        i++;
                     }
                 }
                 render.change_background();
                 render.delete_error(document.querySelector("form"));
                 render.set_progress(document.querySelectorAll("input"));
+                console.log(count_time);
             };
         </script>
         <script src="./assets/js/app.js"></script>
