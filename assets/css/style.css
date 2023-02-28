@@ -89,6 +89,10 @@ body {
     transition: 0.1s linear;
 }
 
+.form.form_register h3 {
+    margin-top: 0;
+}
+
 .label {
     margin-top: 60px;
     display: -webkit-box;
