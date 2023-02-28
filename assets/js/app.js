@@ -45,7 +45,6 @@ const render = {
                 } else {
                     if (password.length < 8) {
                         input.querySelector("span").innerText = "Your password must be at least 8 characters long.";
-                        console.log(password.length);
                     }
                     if (password.length > 8) {
                         input.querySelector("span").innerText = "Your password must include letters and numbers.";
@@ -211,5 +210,18 @@ const render = {
                 this.set_vib(item.parentElement, false);
             });
         }
+    },
+
+    // set progress color when input has value
+    set_progress: function (input) {
+        input.forEach((item) => {
+            item.oninput = function () {
+                if (item.value.length !== 0) {
+                    item.parentElement.classList.add("acb");
+                } else {
+                    item.parentElement.classList.remove("acb");
+                }
+            };
+        });
     },
 };

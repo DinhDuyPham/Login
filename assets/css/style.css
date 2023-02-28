@@ -77,9 +77,6 @@ body {
     padding: 50px 30px 25px;
 }
 
-.form.form_register {
-}
-
 .form h3 {
     font-size: 5rem;
     font-weight: 500;
@@ -118,13 +115,13 @@ body {
     left: 0;
     bottom: 0;
     background-color: var(--color-text);
-    transition: 0.5s linear;
+    transition: 0.2s linear;
 }
 
 .label.label-error::after {
     -webkit-box-shadow: 0 0 20px var(--color-shadow);
     box-shadow: 0 0 20px var(--color-shadow);
-    background: var(--color-error);
+    background: var(--color-error) !important;
     /* background-color: var(--color-text-reverse); */
     -webkit-animation: invalid 0.3s linear 4;
     animation: invalid 0.3s linear 4;
@@ -133,7 +130,7 @@ body {
 
 .label.label-error i {
     /* color: var(--color-text-reverse); */
-    color: var(--color-error);
+    color: var(--color-error) !important;
     /* -webkit-animation: invalid 0.1s linear 4; */
     /* animation: invalid 0.1s linear 4; */
 }
@@ -202,17 +199,23 @@ input:not(:placeholder-shown) + label {
     font-size: 1.3rem;
 }
 
-/* label:not(:placeholder-shown) .label:has(> input) {
-    background-color: #34ebbb;
-} */
-e có du .label input:not(:placeholder-shown) + .label::after {
+/* 
+.label input:not(:placeholder-shown) + .label::after {
     background-color: blue;
-}
+} */
 
 .label:focus-within::after {
-    background-color: #3371cd;
-    animation: progress 0.5s linear;
+    background-color: #6a5af9;
+    animation: progress 0.4s linear;
 }
+
+.label.acb::after {
+    background-color: #6a5af9;
+}
+/* 
+.label input:not(:placeholder-shown) + .label::after {
+    background-color: #6a5af9;
+} */
 
 @keyframes progress {
     0% {

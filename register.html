@@ -118,10 +118,11 @@
                         btn_register.setAttribute("type", "button");
                     }
                 }
-                console.log(document.querySelector('form'));
+                // console.log(document.querySelector('form'));
                 render.toggle_hide_password();
                 render.change_background();
                 render.delete_error(document.querySelector('form'))
+                render.set_progress(document.querySelectorAll('input'))
             };
         </script>
         <script src="./assets/js/app.js"></script>
