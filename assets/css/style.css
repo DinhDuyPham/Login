@@ -260,7 +260,7 @@ input:not(:placeholder-shown) + label {
     background-size: 200% auto;
     color: var(--color-shadow);
     -webkit-box-shadow: 0 0 20px var(--color-shadow);
-    box-shadow: 0 0 20px var(--color-shadow);
+    box-shadow: 0 0 10px var(--color-shadow);
     border-radius: 10px;
     cursor: pointer;
     background-image: -webkit-gradient(
@@ -274,6 +274,10 @@ input:not(:placeholder-shown) + label {
     font-weight: 700;
     background-image: -o-linear-gradient(left, #f6d365 0%, #fda085 51%, #f6d365 100%);
     background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+}
+
+.btn:focus {
+    box-shadow: 0 0 30px var(--color-shadow);
 }
 
 .btn-change-bg {

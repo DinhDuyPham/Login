@@ -99,14 +99,13 @@ const render = {
     toggle_hide_password: function () {
         let btn = document.querySelectorAll('input[type="password"] ~ i');
         for (var item of btn) {
-            item.addEventListener("click", (e) => {
-                if (e.target.getAttribute("class") == "fa-regular fa-eye") {
-                    e.target.setAttribute("class", "fa-solid fa-eye-slash");
-                    e.target.parentElement.querySelector("input").setAttribute("type", "password");
-                } else {
-                    e.target.setAttribute("class", "fa-regular fa-eye");
-                    e.target.parentElement.querySelector("input").setAttribute("type", "text");
-                }
+            item.addEventListener("mousedown", (e) => {
+                e.target.setAttribute("class", "fa-regular fa-eye");
+                e.target.parentElement.querySelector("input").setAttribute("type", "text");
+            });
+            item.addEventListener("mouseup", (e) => {
+                e.target.setAttribute("class", "fa-solid fa-eye-slash");
+                e.target.parentElement.querySelector("input").setAttribute("type", "password");
             });
         }
     },

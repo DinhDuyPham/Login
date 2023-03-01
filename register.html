@@ -38,8 +38,8 @@
         >
             <h3>Register</h3>
             <div class="label">
-                <input placeholder=" " type="text" name="Name" id="Name" />
-                <label for="Name">Full name</label>
+                <input placeholder=" " maxlength="30" type="text" name="Name" id="Name"  autofocus/>
+                <label for="Name" >Full name</label>
                 <i class="fa-regular fa-user"></i>
                 <span>Invalid name, please enter another name</span>
             </div>
@@ -72,7 +72,7 @@
                 let listUser = [];
                 let user = {};
                 let btn_register = document.querySelector(".btn.btn_register");
-                btn_register.focus();
+                // btn_register.focus();
                 btn_register.addEventListener("click", click_btn);
                 function click_btn() {
                     listUser = JSON.parse(localStorage.getItem("Users")) || [];
