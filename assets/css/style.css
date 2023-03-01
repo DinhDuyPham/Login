@@ -29,10 +29,6 @@
 
 html {
     font-size: 55.5%;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 body {
@@ -127,6 +123,7 @@ body {
     bottom: 0;
     background-color: var(--color-text);
     transition: 0.2s linear;
+    user-select: text;
 }
 
 .label.label-error::after {
@@ -187,7 +184,6 @@ body {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     cursor: pointer;
-    transition: 0.5s linear;
 }
 
 input:not(:-moz-placeholder-shown) + label {
