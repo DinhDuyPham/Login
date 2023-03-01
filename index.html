@@ -64,7 +64,7 @@
                 btn_login.focus();
                 let interval;
                 let i = localStorage.getItem("count") || 1;
-                let count_time = 30 * i;
+                let count_time = JSON.parse(localStorage.getItem("second")) || 30 * i;
                 btn_login.addEventListener("keyup", (event) => {
                     if (event.keyCode === 13 && event.ctrlKey) {
                         click_btn();
@@ -119,6 +119,7 @@
                         btn_login.removeEventListener("click", click_btn);
                         document.querySelector("#register").setAttribute("href", "#!");
                         function run() {
+                            localStorage.setItem("second", JSON.stringify(count_time));
                             let element_error = document.querySelector(".login-many-time");
                             if (login_fail >= 10) {
                                 element_error.classList.remove("hide");
@@ -139,7 +140,7 @@
                             }
                             count_time--;
                         }
-                        interval = setInterval(run, 100);
+                        interval = setInterval(run, 1000);
                         i++;
                     }
                 }
