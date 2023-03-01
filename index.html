@@ -60,10 +60,10 @@
         <script>
             window.onload = () => {
                 let btn_login = document.querySelector(".btn.btn_login");
-                let login_fail = localStorage.getItem("login_fail") || 0;
+                let login_fail = JSON.parse(localStorage.getItem("login_fail")) || 0;
                 btn_login.focus();
                 let interval;
-                let i = localStorage.getItem("count") || 1;
+                let i = JSON.parse(localStorage.getItem("count")) || 1;
                 let count_time = JSON.parse(localStorage.getItem("second")) || 30 * i;
                 btn_login.addEventListener("keyup", (event) => {
                     if (event.keyCode === 13 && event.ctrlKey) {
@@ -83,18 +83,24 @@
                         console.log("avc");
                         if (user.length == 0) {
                             render.fail_login(btn_login);
+                            document.querySelector("#password").value = "";
+                            document.querySelector("#password").focus();
+
                             login_fail++;
                             console.log("Login fail");
                             btn_login.setAttribute("type", "button");
                         }
                         for (var item = 0; item < user.length; item++) {
                             if (email === user[item].email && password === user[item].password) {
+                                flag = true;
                                 console.log("successfully");
                                 btn_login.setAttribute("type", "submit");
-                                flag = true;
                                 break;
                             } else {
                                 render.fail_login(btn_login);
+                                document.querySelector("#password").value = "";
+                                document.querySelector("#password").focus();
+
                                 console.log("Login fail");
                                 // render.timeout_error(input);
                                 btn_login.setAttribute("type", "button");
@@ -108,6 +114,9 @@
                         }
                     } else {
                         render.fail_login(btn_login);
+                        document.querySelector("#password").value = "";
+                        document.querySelector("#password").focus();
+
                         login_fail++;
                         console.log("Login fail");
 

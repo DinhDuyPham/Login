@@ -28,6 +28,12 @@ const render = {
 
             if (!regex_email.test(email)) {
                 let input = document.querySelector(".label:has(>#email)");
+                // if (login === 1 && email != "") {
+                //     document.querySelector("#password").focus();
+                // }
+                // if (login == 1 && email == "") {
+                //     document.querySelector("#email").focus();
+                // }
                 this.timeout_error(input);
                 console.log("Invalid email");
                 input.querySelector("span").innerText = "Invalid email, please enter a valid email address";
@@ -73,6 +79,8 @@ const render = {
     // Case login fail
     fail_login: function (btn) {
         btn.classList.add("btn_login-invalid");
+        // document.querySelector("#password").focus();
+        // document.querySelector("#password").value = "";
         setTimeout(() => {
             btn.classList.remove("btn_login-invalid");
         }, 1000);
