@@ -64,7 +64,7 @@
                 btn_login.focus();
                 let interval;
                 let i = localStorage.getItem("count") || 1;
-                let count_time = 3 * i;
+                let count_time = 30 * i;
                 btn_login.addEventListener("keyup", (event) => {
                     if (event.keyCode === 13 && event.ctrlKey) {
                         click_btn();
@@ -115,7 +115,7 @@
                     }
                     // console.log(document.querySelector("#password").parentElement.querySelector("span"));
                     localStorage.setItem("login_fail", JSON.stringify(login_fail));
-                    if (login_fail === 10) {
+                    if (login_fail >= 10) {
                         btn_login.removeEventListener("click", click_btn);
                         document.querySelector("#register").setAttribute("href", "#!");
                         function run() {
@@ -132,14 +132,14 @@
                                 document.querySelector("#register").setAttribute("href", "./register.html");
                                 document.querySelector(".login-many-time").classList.add("hide");
                                 login_fail = 0;
-                                count_time = 3 * i;
+                                count_time = 30 * i;
                                 localStorage.setItem("count", JSON.stringify(i));
                                 btn_login.addEventListener("click", click_btn);
                                 localStorage.setItem("login_fail", 0);
                             }
                             count_time--;
                         }
-                        interval = setInterval(run, 1000);
+                        interval = setInterval(run, 100);
                         i++;
                     }
                 }
